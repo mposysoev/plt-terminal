@@ -1,9 +1,17 @@
 [package]
 name = "pltt"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 plotlib = "0.5.1"
+
+
+[profile.release]
+opt-level = 3        # Optimize for size while still balancing performance
+lto = true             # Enable Link Time Optimization
+codegen-units = 1      # Reduce codegen units to enhance optimization
+debug = false          # Disable debug info in release builds
+panic = "abort"        # Use abort on panic to reduce binary size
